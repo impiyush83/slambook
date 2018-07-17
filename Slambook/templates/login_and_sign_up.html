@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link href="{{ url_for('static',filename='css/homepage_style.css')}}" type="text/css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<div id="header_wrapper">
+ <div id="header">
+ <form method="post" action="/login">
+ <li>Email or Phone<br><input name="email" type="text" name="email"></li>
+ <li>Password<br><input type="password" name="password"><br><a href="">Forgotten account?</a></li>
+ <li><input type="submit" name="login" value="Log In"></li>
+ </form>
+ </div>
+</div>
+
+<div id="wrapper">
+
+<div id="div2" style="align-self: center ; margin: 100px 400px 400px 100px ; padding-left: 200px ">
+<h1>Create an account</h1>
+<p>It's free and always will be.</p>
+    <form name="signup" method="post" action="/insertuser">
+<li><input name="fn" type="text" placeholder="First Name" id="firstname"><input name="sn" type="text" placeholder="Surname" id="surname"></li>
+<li><input name="email" type="text" placeholder="email address"></li>
+<li><input name="pass" type="password" placeholder="New password"></li>
+<li><input name="gender" type="radio" value="Female">Female <input name="gender" type="radio" value="Male">Male</li>
+<li id="terms">By clicking Create an account, you agree to our Terms and that <br>you have read our Data Policy including our Cookie Use.</li>
+<li><input  type="submit" value="Create an account"></li>
+    </form>
+</div>
+
+</div>
+
+</body>
+</html>
