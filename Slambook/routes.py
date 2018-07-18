@@ -1,29 +1,21 @@
 from string import lower
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from sqlalchemy import String, and_
 from sqlalchemy_wrapper import SQLAlchemy
+from models import Parent, Child, db
 
 app = Flask(__name__)
-
-db = SQLAlchemy('sqlite:///slambook.db')
-
-
-class Parent(db.Model):
-    __tablename__ = "parent"
-
-    fn = db.Column(String)
-    sn = db.Column(String)
-    email = db.Column(String, primary_key=True)
-    password = db.Column(String)
-    gender = db.Column(String)
-
-
-db.create_all()
 
 
 @app.route('/')
 def index():
+    return render_template('login_and_sign_up.html')
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
     return render_template('login_and_sign_up.html')
 
 
@@ -40,6 +32,8 @@ def login():
                 break
         if flag == 1:
             print "1"
+            session['profile'].append(email)
+            print "1"
             return redirect(url_for('logged_in'))
         else:
             print "2"
@@ -49,9 +43,14 @@ def login():
         return redirect(url_for('index'))
 
 
+@app.route('/addingfriend')
+def add_friend():
+    return render_template('registration.html')
+
+
 @app.route('/home')
 def logged_in():
-    return render_template('login_and_sign_up.html')
+    return render_template('homepage.html')
 
 
 @app.route('/insertuser', methods=['POST', 'GET'])
@@ -66,7 +65,3 @@ def insertuser():
     db.add(u1)
     db.commit()
     return redirect(url_for('index'))
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

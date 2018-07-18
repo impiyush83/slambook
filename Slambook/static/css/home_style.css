@@ -50,15 +50,15 @@ body
 }
 #header form li a
 {
- color:#A9BCF5;
  text-decoration:none;
+ color: #0636ff;
 }
 #header form input[type="text"]
 {
  margin-top:3px;
  margin-bottom:3px;
  width:150px;
- border:1px solid #08298A;
+ border:1px solid #686765;
  height:25px;
  padding-left:3px;
 }
@@ -67,7 +67,7 @@ body
  margin-top:3px;
  margin-bottom:3px;
  width:150px;
- border:1px solid #08298A;
+ border:1px solid #686765;
  height:25px;
  padding-left:3px;
 }
@@ -75,9 +75,9 @@ body
 {
  height:25px;
  margin-top:20px;
- background-color:#084B8A;
+ background-color:#686765;
  color:white;
- border:1px solid #08298A;
+ border:1px solid #686765;
 }
 #wrapper
 {
@@ -103,7 +103,7 @@ body
  font-family:arial;
  font-weight:bold;
  margin:0px;
- color:#0e385f;
+ color:#686765;
 }
 #wrapper #div2
 {
@@ -163,7 +163,7 @@ body
 {
  margin-left:10px;
  width:150px;
- color:#045FB4;
+ color:#686765;
  text-decoration:none;
  font-size:11px;
  display: inline-block;
@@ -246,7 +246,7 @@ body
 }
 #footer1 a
 {
- color:#365899;
+ color:#686765;
  display:inline;
  margin-left:10px;
  text-decoration:none;
@@ -265,7 +265,7 @@ body
 }
 #footer2 a
 {
- color:#365899;
+ color:#686765;
  display:inline-block;
  margin:5px;
  margin-left:0px;
