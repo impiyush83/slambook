@@ -1,9 +1,6 @@
-from string import lower
-
-from flask import Flask, render_template, request, redirect, url_for, session
-from sqlalchemy import String, and_
+from sqlalchemy import String, Column, ForeignKey
+from sqlalchemy.orm import relationship
 from sqlalchemy_wrapper import SQLAlchemy
-
 
 db = SQLAlchemy('sqlite:///slambook.db')
 
@@ -11,28 +8,26 @@ db = SQLAlchemy('sqlite:///slambook.db')
 class Parent(db.Model):
     __tablename__ = "parent"
 
-    fn = db.Column(String)
-    sn = db.Column(String)
-    email = db.Column(String, primary_key=True)
-    password = db.Column(String)
-    gender = db.Column(String)
-    childs = db.relationship('Child')
-
+    fn = Column(String)
+    sn = Column(String)
+    email = Column(String, primary_key=True)
+    password = Column(String)
+    gender = Column(String)
+    childs = relationship('Child')
 
 
 class Child(db.Model):
     __tablename__ = "child"
-    email = db.Column(db.String, db.ForeignKey('parent.email'))
-    friend = db.relationship("Parent")
-    fn = db.Column(String)
-    sn = db.Column(String)
-    email = db.Column(String, primary_key=True)
-    gender = db.Column(String)
-    fcolor =db.Column(String)
-    ffood = db.Column(String)
-    fsong =db.Column(String)
+    email = Column(String, ForeignKey('parent.email'),primary_key=True)
+    friend = relationship("Parent")
+    fn = Column(String)
+    sn = Column(String)
+    gender = Column(String)
+    fcolor = Column(String)
+    ffood = Column(String)
+    fsong = Column(String)
+    image_path = Column(String)
+
 
 db.create_all()
-
-
-
+# Parent
