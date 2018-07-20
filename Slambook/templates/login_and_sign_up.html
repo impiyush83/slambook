@@ -6,10 +6,16 @@
 <body>
 
 <div id="header_wrapper">
+<div class="t-left">
+    <a class="site-branding" href="{{ url_for('index') }}">
+        <img src="{{ url_for('static',filename="img/logo.jpg") }}" width="200px"/>
+    </a>
+</div>
  <div id="header">
  <form method="post" action="/login">
  <li>Email or Phone<br><input name="email" type="text" name="email" required></li>
- <li>Password<br><input type="password" name="password" required><br><a href="">Forgotten account?</a></li>
+ <li>Password<br><input type="password" name="password" required></li>
+{#   #  <br><a href="">Forgotten account?</a>#}
  <li><input type="submit" name="login" value="Log In"></li>
  </form>
  </div>

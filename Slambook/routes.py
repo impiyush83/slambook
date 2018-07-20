@@ -16,26 +16,34 @@ def index():
     return render_template('login_and_sign_up.html')
 
 
-@app.route('/upload',methods=['POST'])
+@app.route('/upload', methods=['POST'])
 def upload():
-    try:
-        fn = request.form['fname']
-        sn = request.form['sname']
-        email=request.form['email']
-        fcolor=request.form['fcolor']
-        ffood = request.form['ffood']
-        fsong = request.form['fsong']
-        gender = request.form['gender']
-        filename = photos.save(request.files['fimg'])
-        filename = 'static/img/'+filename
-        print "5"
-        obj = db.query(Parent).filter().first()
-        print obj
-        db.commit(Child(fn=fn,sn=sn,email=email,fcolor=fcolor,ffood=ffood,fsong=fsong,image_path=filename,gender=gender, friend=obj))
-        print "6"
-        redirect(url_for('h'))
-    except:
-        return redirect(url_for('add_friend'))
+    if g.profile:
+        try:
+            fn = request.form['fname']
+            sn = request.form['sname']
+            # email=request.form['email']
+            fcolor = request.form['fcolor']
+            ffood = request.form['ffood']
+            fsong = request.form['fsong']
+            gender = request.form['gender']
+            tel = request.form['tel']
+          #  filename = photos.save(request.files['fimg'])
+           # filename = 'static/img/' + filename
+            # print "5"
+            # print session['profile']
+            obj = db.query(Parent).filter(Parent.email == session['profile']).first()
+            print obj
+            # image_path = filename
+            db.add(Child(fn=fn, sn=sn, fcolor=fcolor, ffood=ffood, fsong=fsong, gender=gender, friend=obj, tel=tel))
+            db.commit()
+            print obj.childs
+            print "6"
+            return redirect(url_for('logged_in'))
+        except:
+            return redirect(url_for('add_friend'))
+    else:
+        return redirect(url_for('index'))
 
 
 @app.route('/getsession')
@@ -91,9 +99,8 @@ def login():
         return redirect(url_for('index'))
 
 
-@app.route('/addingfriend',methods=['POST','GET'])
+@app.route('/addingfriend', methods=['POST', 'GET'])
 def add_friend():
-
     return render_template('registration.html')
 
 
@@ -101,8 +108,9 @@ def add_friend():
 def logged_in():
     print g.profile
     if g.profile:
-        friends = db.query(Child).filter().all()
-        return render_template('homepage.html',friends=friends)
+        friends = db.query(Child).filter(Child.email == session['profile']).all()
+        len1 = len(friends)
+        return render_template('homepage.html', friends=friends, len=len1)
     return redirect(url_for('index'))
 
 
@@ -113,7 +121,6 @@ def insertuser():
     email = request.form['email']
     password = request.form['pass']
     gender = request.form['gender']
-    print gender
     u1 = Parent(fn=fn, sn=sn, email=email, password=password, gender=gender)
     db.add(u1)
     db.commit()
