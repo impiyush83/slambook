@@ -12,7 +12,7 @@
 
     <!-- Mobile Specific Metas
 	================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+{#	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">#}
 
     <!-- CSS
 	================================================== -->
@@ -93,11 +93,11 @@
 		</section>
 		<!--////////////////////////////////////Footer-->
         <form  action="/logout" method="post">
-	<header class="main-header">
-			<div class="zerogrid">
+	 <header>
+			<div >
 				<!--Top-->
 				<div class="t-center">	<!-- Menu-main -->
-					<div id='cssmenu' class="align-center">
+					<div  class="align-center">
 						<ul>
 						   <li><a href='{{ url_for('logout') }}'><span>Logout</span></a></li>
 						</ul>

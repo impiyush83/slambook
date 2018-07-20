@@ -101,8 +101,10 @@ def login():
 
 @app.route('/addingfriend', methods=['POST', 'GET'])
 def add_friend():
-    return render_template('registration.html')
-
+    if session['profile']:
+        return render_template('registration.html')
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/home')
 def logged_in():
@@ -116,16 +118,18 @@ def logged_in():
 
 @app.route('/insertuser', methods=['POST', 'GET'])
 def insertuser():
-    fn = request.form['fn']
-    sn = request.form['sn']
-    email = request.form['email']
-    password = request.form['pass']
-    gender = request.form['gender']
-    u1 = Parent(fn=fn, sn=sn, email=email, password=password, gender=gender)
-    db.add(u1)
-    db.commit()
-    return redirect(url_for('index'))
-
+    try:
+        fn = request.form['fn']
+        sn = request.form['sn']
+        email = request.form['email']
+        password = request.form['pass']
+        gender = request.form['gender']
+        u1 = Parent(fn=fn, sn=sn, email=email, password=password, gender=gender)
+        db.add(u1)
+        db.commit()
+        return redirect(url_for('index'))
+    except:
+        return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True , host="0.0.0.0" , port=5000 )
