@@ -13,9 +13,9 @@
 </div>
  <div id="header">
  <form method="post" action="/login">
- <li>Email or Phone<br><input name="email" type="text" name="email" required></li>
+     <li>Email<br><input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></li>
  <li>Password<br><input type="password" name="password" required></li>
-{#   #  <br><a href="">Forgotten account?</a>#}
+     <!--{#   #  <br><a href="">Forgotten account?</a>#}-->
  <li><input type="submit" name="login" value="Log In"></li>
  </form>
  </div>
@@ -28,7 +28,8 @@
 <p>It's free and always will be.</p>
     <form name="signup" method="post" action="/insertuser">
 <li><input name="fn" type="text" placeholder="First Name" id="firstname" required><input name="sn" type="text" placeholder="Surname" id="surname" required></li>
-<li><input name="email" type="text" placeholder="email address" required></li>
+        <li><input name="email" type="text" placeholder="email address"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></li>
 <li><input name="pass" type="password" placeholder="New password" required></li>
 <li><input name="gender" type="radio" value="Female" required>Female <input name="gender" type="radio" value="Male" required>Male</li>
 <li id="terms">By clicking Create an account, you agree to our Terms and that <br>you have read our Data Policy including our Cookie Use.</li>

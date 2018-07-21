@@ -55,6 +55,14 @@
 						<ul>
 						   <li><a href='{{ url_for('add_friend') }}'><span>Add friend</span></a></li>
 						</ul>
+                        {% if not lenx %}
+                        <ul>
+                            <li><a href='{{ url_for(' create_secret_key') }}'><span>Create Secret Key</span></a></li>
+                        </ul>
+                        {% endif %}
+                        <ul>
+                            <li><a href='{{ url_for(' enter_secret_key') }}'><span>Enter Secret Key</span></a></li>
+                        </ul>
 					</div>
 				</div>
 			</div>

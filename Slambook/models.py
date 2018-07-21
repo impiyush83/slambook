@@ -32,6 +32,13 @@ class Child(db.Model):
     tel = db.Column(db.Integer)
     # image_path = db.Column(db.String)
 
+
+class Secret(db.Model):
+    __tablename__ = "secret"
+
+    email = db.Column(db.String, db.ForeignKey('parent.email'), unique=True)
+    secret_key = db.Column(db.String, primary_key=True)
+
 db.create_all()
 # Parent
 
