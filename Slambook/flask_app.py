@@ -4,10 +4,6 @@ from models import Parent, db, Child, Secret
 import os
 
 app = Flask(__name__)
-# photos = UploadSet('photos', IMAGES)
-# app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
-# configure_uploads(app, photos)
-# session cannot be created without this
 app.secret_key = os.urandom(24)
 
 
@@ -24,18 +20,18 @@ def enter_secret_key():
 
 @app.route('/create_secret_key', methods=['POST', 'GET'])
 def create_secret_key():
-    print session['profile']
+    print(session['profile'])
     if session['profile']:
         try:
             import random
             import string
             random = ''.join([random.choice(string.ascii_letters + string.digits) for n in xrange(32)])
-            # print random
+            # print(random
             obj = db.query(Parent).filter(Parent.email == session['profile']).first()
-            # print obj.email
+            # print(obj.email
             db.add(Secret(email=obj.email, secret_key=random))
             db.commit()
-            # print "2"
+            # print("2"
             return render_template('copy_secret_key.html', random=random)
         except:
             return redirect(url_for('logged_in'))
@@ -72,12 +68,12 @@ def remote_upload():
             gender = request.form['gender']
             tel = request.form['tel']
             secret_key_object = request.form['secret_key']
-            # print secret_key_object
-            # print secret_key_object
-            # print session['profile']
+            # print(secret_key_object
+            # print(secret_key_object
+            # print(session['profile']
             if str(secret_key_object) != str(session['profile']):
                 obj_of_referer = db.query(Parent).filter(Parent.email == str(secret_key_object)).first()
-                # print "333"
+                # print("333"
                 db.add(
                     Child(fn=fn, sn=sn, fcolor=fcolor, ffood=ffood, fsong=fsong, gender=gender, friend=obj_of_referer,
                           tel=tel))
@@ -113,15 +109,15 @@ def upload():
             tel = request.form['tel']
             #  filename = photos.save(request.files['fimg'])
             # filename = 'static/img/' + filename
-            # print "5"
-            # print session['profile']
+            # print("5"
+            # print(session['profile']
             obj = db.query(Parent).filter(Parent.email == session['profile']).first()
-            # print obj
+            # print(obj
             # image_path = filename
             db.add(Child(fn=fn, sn=sn, fcolor=fcolor, ffood=ffood, fsong=fsong, gender=gender, friend=obj, tel=tel))
             db.commit()
-            # print obj.childs
-            # print "6"
+            # print(obj.childs
+            # print("6"
             return redirect(url_for('logged_in'))
         except:
             return redirect(url_for('add_friend'))
@@ -172,15 +168,15 @@ def login():
                     flag = 1
                     break
             if flag == 1:
-                # print "1"
+                # print("1"
                 session['profile'] = email
-                # print "1"
+                # print("1"
                 return redirect(url_for('logged_in'))
             else:
-                # print "2"
+                # print("2"
                 return redirect(url_for('index'))
     except:
-        print "3"
+        print("3")
         return redirect(url_for('index'))
 
 
@@ -195,18 +191,18 @@ def add_friend():
 @app.route('/home')
 def logged_in():
     try:
-        # print session['profile']
-        # print "lg1"
+        # print(session['profile']
+        # print("lg1"
         if session['profile']:
-            # print "lg1"
+            # print("lg1"
             friends = db.query(Child).filter(Child.email == session['profile']).all()
-            # print friends
+            # print(friends
             len1 = len(friends)
-            # print "lg1"
+            # print("lg1"
             object_to_check_secret_key_created = db.query(Secret).filter(Secret.email == session['profile']).all()
             lenx = len(object_to_check_secret_key_created)
             return render_template('homepage.html', friends=friends, len=len1, lenx=lenx)
-        # print "lg1"
+        # print("lg1"
         return redirect(url_for('index'))
     except:
         return redirect(url_for('index'))
