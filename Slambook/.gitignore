@@ -1,4 +1,4 @@
-./Slambook/slambook.db
+slambook.db
 .idea
 .DS_Store
-./Slambook/__pycache__/
+__pycache__/
