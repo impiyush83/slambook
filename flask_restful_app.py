@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, g, Response
-# from flask_uploads import configure_uploads, UploadSet, IMAGES
+from flask import Flask, render_template, request, redirect, url_for, session, g
 from models import Parent, db, Child, Secret
 import os
 
