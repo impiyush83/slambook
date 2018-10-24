@@ -1,6 +1,8 @@
 import datetime
 from decimal import Decimal
 
+date_format = '%Y-%m-%d %H:%M:%S UTC'
+
 
 def parse_date(date_str, _format=date_format):
     try:
