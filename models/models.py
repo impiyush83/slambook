@@ -40,4 +40,3 @@ class Secret(Model):
 
 
 db.create_all()
-# Parent

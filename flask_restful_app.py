@@ -1,10 +1,24 @@
-from flask import Flask, render_template, request, redirect, url_for, session, g
-from models import Parent, db, Child, Secret
-import os
+from flask import render_template, request, redirect, url_for, session, g
+from extensions import db, app
+from models.models import Secret, Parent, Child
 
-app = Flask(__name__)
-app.secret_key = os.urandom(24)
 
+from flask_cors import CORS
+from flask_restful import Api
+import urls
+
+
+def restful_api(app):
+    CORS(app, resources={r"/*": {"origins": "*"}})
+
+    api = Api(app, prefix='/')
+    for url in urls:
+        api.add_resource(
+            url.resource,
+            url.name,
+            *url.endpoint,
+            strict_slashes=False
+        )
 
 @app.route('/enter_secret_key', methods=['POST', 'GET'])
 def enter_secret_key():
@@ -138,7 +152,6 @@ def dropsession():
     return 'Dropped'
 
 
-
 @app.before_request
 def before_request():
     g.profile = None
@@ -157,7 +170,7 @@ def login():
     try:
         if request.method == "POST":
 
-            #session.pop('profile', None)
+            # session.pop('profile', None)
             email = request.form['email']
             password = request.form['password']
             objects = db.query(Parent).filter().all()
@@ -221,6 +234,7 @@ def insertuser():
         return redirect(url_for('index'))
     except:
         return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -4,6 +4,10 @@ from flask import request, jsonify
 
 from utils.custom_exceptions import RequestValidationException
 
+from cerberus import Validator as cerberus_validator
+
+from utils.utils import parse_date, parse_int, parse_decimal
+
 
 class Validator(cerberus_validator):
 
@@ -18,10 +22,6 @@ class Validator(cerberus_validator):
     def _validate_type_utc_date(self, value):
         date_value = parse_date(value)
         return True if date_value else False
-
-    def _validate_type_gps_coordinates(self, value):
-        gps_coordinates_value = parse_coordinates(value)
-        return True if gps_coordinates_value else False
 
     def _validate_type_integer_string(self, value):
         integer_value = parse_int(value)
