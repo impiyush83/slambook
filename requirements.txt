@@ -1,8 +1,5 @@
-aniso8601==3.0.2
-ask==0.0.8
 atomicwrites==1.2.1
 attrs==18.2.0
-baidu==0.2
 beautifulsoup4==4.6.3
 Cerberus==1.2
 certifi==2018.8.24
@@ -26,10 +23,8 @@ MyApplication==0.1.0
 pbr==4.2.0
 pluggy==0.7.1
 py==1.6.0
-pymongo==3.7.1
 pytest==3.7.4
 pytz==2018.6
-quora==0.1.23
 requests==2.19.1
 six==1.11.0
 SQLAlchemy==1.2.11
