@@ -2,27 +2,26 @@ from sqlalchemy import String, Column, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 from sqlalchemy_wrapper import Model
 
+from database import Base
 from extensions import db
 
 
-class Parent(Model):
-    __tablename__ = "parent"
+class User(Base, Model):
+    __tablename__ = "user"
 
-    id = Column(Integer, primary_key=True)
     email = Column(String, unique=True)
     first_name = Column(String)
     last_name = Column(String)
     password = Column(String)
     gender = Column(String)
-    childs = relationship('Child')
+    childs = relationship('Friend')
 
 
-class Child(Model):
+class Friend(Base, Model):
     __tablename__ = "child"
 
-    id = Column(Integer, primary_key=True)
-    email = Column(String, ForeignKey('parent.email'))
-    friend = relationship("Parent")
+    email = Column(String, ForeignKey('user.email'))
+    friend = relationship("User")
     first_name = Column(String)
     last_name = Column(String)
     gender = Column(String)
@@ -32,11 +31,11 @@ class Child(Model):
     tel = Column(Integer)
 
 
-class Secret(Model):
+class Secret(Base, Model):
     __tablename__ = "secret"
 
-    email = Column(String, ForeignKey('parent.email'), unique=True)
-    secret_key = Column(String, primary_key=True)
+    email = Column(String, ForeignKey('user.id'), unique=True)
+    secret_key = Column(String, unique=True)
 
 
 db.create_all()
