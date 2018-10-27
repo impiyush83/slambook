@@ -1,3 +1,4 @@
+from flask import render_template
 from flask_restful import Resource
 
 from extensions import app
@@ -15,7 +16,7 @@ class Index(Resource):
 
     .. http:get::  /
 
-        This api will be used to login user
+        This api will be used to showcase homepage
 
         **Example request**:
 
@@ -29,13 +30,12 @@ class Index(Resource):
 
            HTTP/1.1 200 OK
            Vary: Accept
-           Content-Type: application/json
-           {
-                    "auth_token" : '<auth_token>'
-           }
 
-        :statuscode 200: response with auth token
+
+        :statuscode 200: responses homepage
         :statuscode 400: value error
 
         """
-        pass
+        import pdb
+        pdb.set_trace()
+        return render_template('login_and_sign_up.html')

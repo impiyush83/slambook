@@ -1,8 +1,7 @@
 from flask_cors import CORS
 from flask_restful import Api
-
-import urls
 from extensions import app
+from urls import urls
 
 
 def restful_api(app):
@@ -16,6 +15,9 @@ def restful_api(app):
             *url.endpoint,
             strict_slashes=False
         )
+        import pdb
+        pdb.set_trace()
+
 
 if __name__ == '__main__':
     app.run(debug=True)
