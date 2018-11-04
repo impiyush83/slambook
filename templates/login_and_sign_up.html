@@ -1,18 +1,18 @@
 <html>
 <head>
-    <link href="{{ url_for('static',filename='css/home_style.css')}}" type="text/css" rel="stylesheet"/>
+    <!--<link href="{{ url_for('static',filename='css/home_style.css')}}" type="text/css" rel="stylesheet"/>-->
 
 </head>
 <body>
 
 <div id="header_wrapper">
 <div class="t-left">
-    <a class="site-branding" href="{{ url_for('index') }}">
-        <img src="{{ url_for('static',filename='img/logo.jpg') }}" width="200px"/>
+    <a class="site-branding">
+        <!--<img src="{{ url_for('static',filename='img/logo.jpg') }}" width="200px"/>-->
     </a>
 </div>
  <div id="header">
- <form method="post" action="/login">
+ <form method="post" >
      <li>Email<br><input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></li>
  <li>Password<br><input type="password" name="password" required></li>
      <!--{#   #  <br><a href="">Forgotten account?</a>#}-->
@@ -26,7 +26,7 @@
 <div id="div2" style="align-self: center ; margin: 100px 400px 400px 100px ; padding-left: 200px ">
 <h1>Create an account</h1>
 <p>It's free and always will be.</p>
-    <form name="signup" method="post" action="/insertuser">
+    <!--<form name="signup" method="post">-->
 <li><input name="fn" type="text" placeholder="First Name" id="firstname" required><input name="sn" type="text" placeholder="Surname" id="surname" required></li>
         <li><input name="email" type="text" placeholder="email address"
                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></li>

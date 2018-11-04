@@ -3,8 +3,8 @@ from resource.user import User
 from utils import URLS
 
 urls = [
-    URLS(resource=Index, endpoint=["/"], name="showcases_homepage"),
-    URLS(resource=User, endpoint=["/user"], name="signup_user")
+    URLS(resource=Index, endpoint=['/'], name="showcases_homepage"),
+    URLS(resource=User, endpoint=['/user'], name="signup_user")
 ]
 
 #

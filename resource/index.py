@@ -36,6 +36,4 @@ class Index(Resource):
         :statuscode 400: value error
 
         """
-        import pdb
-        pdb.set_trace()
         return render_template('login_and_sign_up.html')
