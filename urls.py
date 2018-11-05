@@ -4,8 +4,7 @@ from utils import URLS
 
 urls = [
     URLS(resource=Index, endpoint=['/'], name="showcases_homepage"),
-    URLS(resource=User, endpoint=['/user'], name="signup_user"),
-    URLS(resource=User, endpoint=['/user/<:int>'], name="login_user")
+    URLS(resource=User, endpoint=['/user'], name="signup_user")
 ]
 
 #
