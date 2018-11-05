@@ -4,7 +4,8 @@ from utils import URLS
 
 urls = [
     URLS(resource=Index, endpoint=['/'], name="showcases_homepage"),
-    URLS(resource=User, endpoint=['/user'], name="signup_user")
+    URLS(resource=User, endpoint=['/user'], name="signup_user"),
+    URLS(resource=User, endpoint=['/user/<:int>'], name="login_user")
 ]
 
 #
@@ -205,17 +206,4 @@ urls = [
 #         return redirect(url_for('index'))
 #
 #
-# @app.route('/insertuser', methods=['POST', 'GET'])
-# def insertuser():
-#     try:
-#         fn = request.form['fn']
-#         sn = request.form['sn']
-#         email = request.form['email']
-#         password = request.form['pass']
-#         gender = request.form['gender']
-#         u1 = Parent(fn=fn, sn=sn, email=email, password=password, gender=gender)
-#         db.add(u1)
-#         db.commit()
-#         return redirect(url_for('index'))
-#     except:
-#         return redirect(url_for('index'))
+

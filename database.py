@@ -2,7 +2,7 @@ import inflection
 from sqlalchemy import Column, Integer
 from sqlalchemy.ext.declarative import declared_attr
 
-from .extensions import db
+from app import db
 
 Model = db.Model
 

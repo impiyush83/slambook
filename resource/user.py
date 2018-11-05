@@ -1,6 +1,6 @@
+from flask import app
 from flask_restful import Resource
 
-from extensions import app
 from utils.resource_exceptions import exception_handle
 
 
@@ -13,7 +13,7 @@ class User(Resource):
     def get(self):
         """
 
-    .. http:get::  /user
+    .. http:get::  /user/<:int>
 
         This api will be used to login user
 
@@ -38,7 +38,18 @@ class User(Resource):
         :statuscode 400: value error
 
         """
-        pass
+        import pdb
+        pdb.set_trace()
+        fn = request.form['fn']
+        sn = request.form['sn']
+        email = request.form['email']
+        password = request.form['pass']
+        gender = request.form['gender']
+        u1 = Parent(fn=fn, sn=sn, email=email, password=password, gender=gender)
+        db.add(u1)
+        db.commit()
+        return redirect(url_for('index'))
+        return redirect(url_for('index'))
 
     def post(self):
         """
@@ -51,7 +62,7 @@ class User(Resource):
 
         .. sourcecode:: http
 
-           POST  /erp/auth/odoo_request HTTP/1.1
+           POST  /user HTTP/1.1
 
         **Example response**:
 
@@ -67,4 +78,15 @@ class User(Resource):
         :statuscode 400: value error
 
         """
-        pass
+        import pdb
+        pdb.set_trace()
+        fn = request.form['fn']
+        sn = request.form['sn']
+        email = request.form['email']
+        password = request.form['pass']
+        gender = request.form['gender']
+        u1 = Parent(fn=fn, sn=sn, email=email, password=password, gender=gender)
+        db.add(u1)
+        db.commit()
+        return redirect(url_for('index'))
+        return redirect(url_for('index'))

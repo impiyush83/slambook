@@ -2,7 +2,6 @@ from functools import wraps
 from flask_restful import abort
 from sqlalchemy.orm.exc import NoResultFound
 from werkzeug.exceptions import HTTPException
-from extensions import db
 from flask import current_app as app, make_response
 from utils.custom_exceptions import \
     RequestValidationException, AuthenticationException, \
