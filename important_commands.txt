@@ -1,0 +1,3 @@
+export APP_SETTINGS="config.DevelopmentConfig"  to run development config .
+python manage.py db init for migration   // first migration it creates all the migration folder and files under it.
+python manage.py db upgrade
