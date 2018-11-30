@@ -1,11 +1,11 @@
 from flask import current_app as app
 from flask_restful import Resource
 
-from utils.resource_exceptions import exception_handle
+# from utils.resource_exceptions import exception_handle
 
 
 class User(Resource):
-    decorators = [exception_handle]
+    # decorators = [exception_handle]
 
     def __init__(self):
         app.logger.info('In the constructor of {}'.format(self.__class__.__name__))

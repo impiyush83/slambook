@@ -10,6 +10,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     restful_api(app)
     app.run(debug=True)

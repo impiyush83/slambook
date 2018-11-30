@@ -1,5 +1,4 @@
-from sqlalchemy import JSON
-from sqlalchemy.orm import relationship
+from sqlalchemy.dialects.postgresql import JSON
 
 from app import db
 
@@ -20,34 +19,43 @@ class Result(db.Model):
     def __repr__(self):
         return '<id {}>'.format(self.id)
 
+#
+# class User(db.Model):
+#     __tablename__ = "user"
+#
+#     email = db.Column(db.String, unique=True)
+#     first_name = db.Column(db.String())
+#     last_name = db.Column(db.String())
+#     password = db.Column(db.String())
+#     gender = db.Column(db.String())
+#     childs = relationship('Friend')
+#
+#
+# class Friend(db.Model):
+#     __tablename__ = "friend"
+#
+#     email = db.Column(db.String(), ForeignKey('user.id'))
+#     friend = relationship("User")
+#     first_name = db.Column(db.String())
+#     last_name = db.Column(db.String())
+#     gender = db.Column(db.String())
+#     favourite_color = db.Column(db.String())
+#     favourite_food = db.Column(db.String())
+#     favourite_song = db.Column(db.String())
+#     mobile = db.Column(db.Integer)
+#
+#
+# class Secret(db.Model):
+#     __tablename__ = "secret"
+#
+#     email = db.Column(db.String, ForeignKey('user.id'), unique=True)
+#     secret_key = db.Column(db.String, unique=True)
+#
+#
+# class Secret5(db.Model):
+#     __tablename__ = "secret5"
+#
+#     email = db.Column(db.String, ForeignKey('user.id'), unique=True)
+#     secret_key = db.Column(db.String, unique=True)
+#     secret_key_a = db.Column(db.String, unique=True)
 
-class User(db.Model):
-    __tablename__ = "user"
-    
-    email = db.Column(db.String, unique=True)
-    first_name = db.Column(db.String)
-    last_name = db.Column(db.String)
-    password = db.Column(db.String)
-    gender = db.Column(db.String)
-    childs = relationship('Friend')
-
-
-class Friend(db.Model):
-    __tablename__ = "friend"
-    
-    email = db.Column(db.String, db.ForeignKey('user.id'))
-    friend = relationship("User")
-    first_name = db.Column(db.String)
-    last_name = db.Column(db.String)
-    gender = db.Column(db.String)
-    favourite_color = db.Column(db.String)
-    favourite_food = db.Column(db.String)
-    favourite_song = db.Column(db.String)
-    mobile = db.Column(db.Integer)
-
-
-class Secret(db.Model):
-    __tablename__ = "secret"
-    
-    email = db.Column(db.String, db.ForeignKey('user.id'), unique=True)
-    secret_key = db.Column(db.String, unique=True)
