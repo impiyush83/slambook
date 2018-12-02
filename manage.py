@@ -1,14 +1,13 @@
-import os
-from flask_script import Manager
-from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager, Server
+from flask_migrate import MigrateCommand, Migrate
 
-from app import app, db
+from slambook_restful.app.app import create_app
 
-app.config.from_object(os.environ['APP_SETTINGS'])
 
-migrate = Migrate(app, db)
+app = create_app()
 manager = Manager(app)
-
+migrate = Migrate(compare_type=True)
+manager.add_command('server', Server(threaded=True))
 manager.add_command('db', MigrateCommand)
 
 

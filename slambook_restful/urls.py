@@ -1,10 +1,9 @@
-from resource.index import Index
-from resource.user import User
-from utils import URLS
+from slambook_restful.resource.index import Index
+from slambook_restful.utils import URLS
 
 urls = [
-    URLS(resource=Index, endpoint=['/'], name="showcases_homepage"),
-    URLS(resource=User, endpoint=['/user'], name="signup_user")
+    URLS(resource=Index, endpoint=['/'], name="showcases_homepage")
+    # URLS(resource=Customer, endpoint=['user'], name="signup_user")
 ]
 
 #

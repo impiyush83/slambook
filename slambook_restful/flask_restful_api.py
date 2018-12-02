@@ -1,6 +1,6 @@
 from flask_cors import CORS
 from flask_restful import Api
-from urls import urls
+from slambook_restful.urls import urls
 
 
 def restful_api(app):
