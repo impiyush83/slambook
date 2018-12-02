@@ -1,5 +1,5 @@
 from sqlalchemy import Integer, String
-from slambook.extensions import db
+from slambook_restful.manage import db
 
 
 class Friend(db.Model):

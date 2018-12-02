@@ -1,7 +1,7 @@
 from sqlalchemy import String
 
-from slambook.extensions import db
-from slambook_restful.models.Base import Base
+from slambook_restful.manage import db
+from slambook_restful.models.Base.database import Base
 
 
 class User(Base, db.Model):

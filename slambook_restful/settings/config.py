@@ -7,26 +7,27 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = os.urandom(24)
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    # SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 
-class ProductionConfig(Config):
+class ProdConfig(Config):
     DEBUG = False
     # SQLALCHEMY_DATABASE_URI = "postgresql://slambook:slambook@localhost/slambook_prod"
 
 
-class StagingConfig(Config):
+class StageConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
     # SQLALCHEMY_DATABASE_URI = "postgresql://slambook:slambook@localhost/slambook_stage"
 
 
-class DevelopmentConfig(Config):
+class DevConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    # SQLALCHEMY_DATABASE_URI = "postgresql://slambook:slambook@localhost/slambook_dev"
+    SQLALCHEMY_DATABASE_URI = "postgresql://slambook:slambook@localhost/slambook_dev"
 
 
-class TestingConfig(Config):
+class TestConfig(Config):
     TESTING = True
+    DEBUG = True
     # SQLALCHEMY_DATABASE_URI = "postgresql://slambook:slambook@localhost/slambook_test"
