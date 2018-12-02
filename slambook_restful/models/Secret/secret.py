@@ -1,6 +1,6 @@
 from sqlalchemy import String, Integer
 
-from slambook_restful.manage import db
+from .. import db
 
 
 class Secret(db.Model):

@@ -1,6 +1,6 @@
 from sqlalchemy import String
 
-from slambook_restful.manage import db
+from .. import db
 from slambook_restful.models.Base.database import Base
 
 

@@ -2,7 +2,7 @@ import inflection
 from sqlalchemy import Column, Integer
 from sqlalchemy.ext.declarative import declared_attr
 
-from slambook_restful.manage import db
+from .. import db
 
 Model = db.Model
 
