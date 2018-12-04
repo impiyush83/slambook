@@ -1,6 +1,6 @@
 from sqlalchemy import Integer, String
-from .. import db
 
+from ..db import db
 
 class Friend(db.Model):
     __tablename__ = "friend"

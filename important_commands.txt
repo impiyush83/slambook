@@ -8,3 +8,5 @@ export DATABASE_URL="postgresql://slambook:slambook@localhost/slambook_dev"
 
 import the path of models in manage.py if new table is added
 
+# the templates base.html and 404.html are for reference purpose for large scale apps
+# the base.html can be extended to other html files.

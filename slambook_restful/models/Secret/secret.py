@@ -1,6 +1,6 @@
 from sqlalchemy import String, Integer
 
-from .. import db
+from ..db import db
 
 
 class Secret(db.Model):

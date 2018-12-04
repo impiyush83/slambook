@@ -2,7 +2,8 @@ import inflection
 from sqlalchemy import Column, Integer
 from sqlalchemy.ext.declarative import declared_attr
 
-from .. import db
+
+from ..db import db
 
 Model = db.Model
 
