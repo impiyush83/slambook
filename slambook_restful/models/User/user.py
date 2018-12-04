@@ -1,5 +1,6 @@
 from sqlalchemy import String
 
+from slambook_restful.utils.utils import encrypt_password
 from ..db import db
 from slambook_restful.models.Base.database import Base
 
@@ -16,8 +17,9 @@ class User(Base, db.Model):
 
     @classmethod
     def insert_user(cls, user_obj):
+        encrypted_password = encrypt_password(user_obj.get("password"))
         u1 = cls(first_name=user_obj.get("first_name"), last_name=user_obj.get("last_name"),
-                 email=user_obj.get("email"), password=user_obj.get("password"), gender=user_obj.get("gender"))
+                 email=user_obj.get("email"), password=encrypted_password, gender=user_obj.get("gender"))
         db.add(u1)
         db.flush()
         db.commit()
