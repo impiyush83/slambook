@@ -1,6 +1,6 @@
 from sqlalchemy import Integer, String
-
 from ..db import db
+
 
 class Friend(db.Model):
     __tablename__ = "friend"
@@ -15,3 +15,8 @@ class Friend(db.Model):
     favourite_food = db.Column(String)
     favourite_song = db.Column(String)
     mobile = db.Column(db.Integer)
+
+    @classmethod
+    def get_friends_with_email_address(cls, user_id):
+        return db.query(cls).filter(cls.id == user_id).all()
+

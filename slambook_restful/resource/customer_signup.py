@@ -2,14 +2,13 @@ from flask import current_app as app, request, make_response, render_template
 from flask_restful import Resource
 
 from constants.common_constants import headers
-from slambook_restful.models.User.user import User
 from slambook_restful.schemas.register_customer import register_user
 from slambook_restful.utils.resource_exceptions import exception_handle
 from slambook_restful.utils.validators import ajax_request_data_validator_restful
 from slambook_restful.views.user_registration import user_registration
 
 
-class Customer(Resource):
+class CustomerSignUp(Resource):
     decorators = [exception_handle]
 
     def __init__(self):
@@ -19,7 +18,7 @@ class Customer(Resource):
     def post(self):
         """
 
-    .. http:post::  /user
+    .. http:post::  /user/signup
 
         This api will be used to signup user
 
@@ -28,6 +27,13 @@ class Customer(Resource):
         .. sourcecode:: http
 
            POST  /user HTTP/1.1
+           {
+             "" : ,
+             "" : ,
+             "" : ,
+             "" : ,
+             "" :
+           }
 
         **Example response**:
 
@@ -46,3 +52,4 @@ class Customer(Resource):
         data = request.json
         user_registration(data)
         return make_response(render_template('login_and_sign_up.html'), 200, headers)
+

@@ -1,4 +1,5 @@
 import datetime
+import uuid
 from decimal import Decimal
 
 from passlib.context import CryptContext
@@ -64,3 +65,7 @@ def encrypt_password(password):
 
 def check_encrypted_password(password, hashed):
     return pwd_context.verify(password, hashed)
+
+
+def generate_uuid():
+    return str(uuid.uuid4())

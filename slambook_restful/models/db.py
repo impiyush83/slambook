@@ -1,4 +1,5 @@
 import os
+
 from flask import Config
 from sqlalchemy_wrapper import SQLAlchemy
 

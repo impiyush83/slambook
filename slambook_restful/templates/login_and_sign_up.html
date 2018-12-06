@@ -13,10 +13,9 @@
         </div>
 
         <div id="header">
-            <form method="post" >
+            <form method="post" id="user_login">
                 <li>Email<br><input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></li>
                 <li>Password<br><input type="password" name="password" required></li>
-                 <!--{#   #  <br><a href="">Forgotten account?</a>#}-->
                 <li><input type="submit" name="login" value="Log In"></li>
             </form>
         </div>
@@ -67,7 +66,7 @@
                 });
                 $.ajax({
                     type: 'POST',
-                    url: "/user",
+                    url: "/user/signup",
                     data: JSON.stringify(object),
                     datatype: 'json',
                     cache: false,
@@ -76,7 +75,36 @@
                     success: function (data) {
                         console.log("success");
                         console.log(data);
+                         alert("Success");
                         location.reload();
+                    },
+                    error: function (data) {
+                        alert("ERROR " + data.status + " " + data.statusText + " : "+data.responseJSON.message);
+                        location.reload();
+                    }
+                });
+            }));
+        });
+
+
+          $(document).ready(function (e) {
+            $('#user_login').on('submit', (function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                var object = {};
+                formData.forEach(function(value, key){
+                    object[key] = value;
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: "user/login",
+                    data: JSON.stringify(object),
+                    datatype: 'json',
+                    cache: false,
+                    contentType: "application/json; charset=utf-8",
+                    processData: false,
+                    success: function (data) {
+                        window.location.href='user/home'
                     },
                     error: function (data) {
                         alert("ERROR " + data.status + " " + data.statusText + " : "+data.responseJSON.message);

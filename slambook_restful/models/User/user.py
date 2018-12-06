@@ -1,18 +1,18 @@
 from sqlalchemy import String
 
+from slambook_restful.models.Base.database import Base
 from slambook_restful.utils.utils import encrypt_password
 from ..db import db
-from slambook_restful.models.Base.database import Base
 
 
 class User(Base, db.Model):
     __tablename__ = "user"
 
-    email = db.Column(String, unique=True,  nullable=False)
+    email = db.Column(String, unique=True, nullable=False)
     first_name = db.Column(String, nullable=False)
-    last_name = db.Column(String,  nullable=False)
-    password = db.Column(String,  nullable=False)
-    gender = db.Column(String,  nullable=False)
+    last_name = db.Column(String, nullable=False)
+    password = db.Column(String, nullable=False)
+    gender = db.Column(String, nullable=False)
     childs = db.relationship('Friend')
 
     @classmethod
@@ -24,3 +24,10 @@ class User(Base, db.Model):
         db.flush()
         db.commit()
 
+    @classmethod
+    def with_email_address(cls, email):
+        return db.query(User).filter(User.email == email).first()
+
+    @classmethod
+    def with_id(cls, id):
+        return db.query(User).filter(User.id == id).first()

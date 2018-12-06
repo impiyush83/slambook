@@ -19,7 +19,7 @@ elif env == 'dev':
 else:
     app = create_app(TestConfig)
 
-migrate = Migrate(app=app, db=db, compare_type=True)
+# migrate = Migrate(app=app, db=db, compare_type=True)
 manager = Manager(app=app)
 manager.add_command('server', Server(threaded=True))
 manager.add_command('db', MigrateCommand)

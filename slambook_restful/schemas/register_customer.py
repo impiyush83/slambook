@@ -5,3 +5,9 @@ register_user = {
     'email': {'type': 'string', 'required': True},
     'password': {'type': 'string', 'required': True}
 }
+
+
+login_user = {
+    'email': {'type': 'string', 'required': True},
+    'password': {'type': 'string', 'required': True}
+}
