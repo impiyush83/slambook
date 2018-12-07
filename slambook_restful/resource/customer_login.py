@@ -57,7 +57,7 @@ class CustomerLogin(Resource):
         # headers['access_token'] = tokens['access_token']
         friends = Friend.get_friends_with_email_address(user.id)
         is_secret_key_created = Secret.is_secret_key_created(user.email)
-      
+
         response = make_response(
             render_template('homepage.html',
                             friends=friends,

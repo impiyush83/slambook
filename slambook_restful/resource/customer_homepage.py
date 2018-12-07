@@ -6,14 +6,16 @@ from constants.common_constants import headers
 from slambook_restful.models.Friend.friend import Friend
 from slambook_restful.models.Secret.secret import Secret
 from slambook_restful.models.User.user import User
+from slambook_restful.utils.resource_exceptions import exception_handle
 
 
 class CustomerHomepage(Resource):
 
+    decorators = [jwt_required, exception_handle]
+
     def __init__(self):
         app.logger.info('In the constructor of {}'.format(self.__class__.__name__))
 
-    @jwt_required
     def get(self):
         """
 
