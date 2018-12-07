@@ -13,3 +13,10 @@ class Secret(db.Model):
     @classmethod
     def is_secret_key_created(cls, email):
         return db.query(cls).filter(cls.email == email).all()
+
+    @classmethod
+    def add_to_db(cls, email, secret_key):
+        db.session.add(cls(email=email, secret_key=secret_key))
+        db.flush()
+        db.commit()
+

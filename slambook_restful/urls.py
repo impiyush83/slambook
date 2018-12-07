@@ -1,3 +1,4 @@
+from slambook_restful.resource.customer_create_secret_key import CustomerCreateSecretKey
 from slambook_restful.resource.customer_homepage import CustomerHomepage
 from slambook_restful.resource.customer_login import CustomerLogin
 from slambook_restful.resource.customer_logout import CustomerLogout
@@ -11,6 +12,7 @@ urls = [
     URLS(resource=CustomerLogin, endpoint=['user/login'], name="customer_login"),
     URLS(resource=CustomerHomepage, endpoint=['user/home'], name="customer_homepage"),
     URLS(resource=CustomerLogout, endpoint=['user/logout'], name="unsets_jwt_cookie"),
+    URLS(resource=CustomerCreateSecretKey, endpoint=['user/secret-key'], name="create_secret_key"),
 ]
 
 #

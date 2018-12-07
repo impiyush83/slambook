@@ -20,7 +20,7 @@ class User(Base, db.Model):
         encrypted_password = encrypt_password(user_obj.get("password"))
         u1 = cls(first_name=user_obj.get("first_name"), last_name=user_obj.get("last_name"),
                  email=user_obj.get("email"), password=encrypted_password, gender=user_obj.get("gender"))
-        db.add(u1)
+        db.session.add(u1)
         db.flush()
         db.commit()
 
