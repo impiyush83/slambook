@@ -1,9 +1,7 @@
 import os
-
+from slambook_restful.app import create_app
 from flask_migrate import MigrateCommand
 from flask_script import Manager, Server
-
-from slambook_restful.app import create_app
 from slambook_restful.settings import DevConfig, ProdConfig, StageConfig, TestConfig
 
 env = os.environ.get("SLAMBOOK_ENV").lower()
