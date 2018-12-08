@@ -6,6 +6,7 @@ class Friend(db.Model):
     __tablename__ = "friend"
     user_id = db.Column(Integer, db.ForeignKey('user.id'))
     id = db.Column(Integer, autoincrement=True, primary_key=True)
+    email = db.Column(String, nullable=False)
     friend = db.relationship("User")
     first_name = db.Column(String)
     last_name = db.Column(String)
@@ -21,7 +22,7 @@ class Friend(db.Model):
 
     @classmethod
     def add_friend_details(cls, user, data):
-        friend = cls(user_id=user.id , first_name=data.get("first_name"), last_name=data.get("last_name"),
+        friend = cls(user_id=user.id ,email=data.get("email"), first_name=data.get("first_name"), last_name=data.get("last_name"),
                  mobile=data.get("mobile"), favourite_food=data.get("favourite_food"), gender=data.get("gender"),
                  favourite_song=data.get("favourite_song"), favourite_color=data.get("favourite_color"))
         db.session.add(friend)
