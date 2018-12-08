@@ -1,9 +1,11 @@
 import os
 
 from flask import Flask
-from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
-
+from flask_jwt_extended import JWTManager
+from slambook_restful.models.User.user import User
+from slambook_restful.models.Friend.friend import  Friend
+from slambook_restful.models.Secret.secret import Secret
 from slambook_restful.flask_restful_api import restful_api
 from slambook_restful.models.db import db
 
