@@ -1,1 +1,1 @@
-web gunicorn manage:app
+web: python manage.py server 0.0.0.0:5000

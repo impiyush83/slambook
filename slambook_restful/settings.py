@@ -24,7 +24,7 @@ class StageConfig(Config):
 class DevConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "postgresql://slambook:slambook@localhost/slambook_dev"
+    # SQLALCHEMY_DATABASE_URI = "postgresql://slambook:slambook@localhost/slambook_dev"
 
 
 class TestConfig(Config):
