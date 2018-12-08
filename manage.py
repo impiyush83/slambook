@@ -1,13 +1,8 @@
-import os
-
-from flask_migrate import MigrateCommand, Migrate
+from flask_migrate import MigrateCommand
 from flask_script import Manager, Server
-from slambook_restful.models.User.user import User
-from slambook_restful.models.Friend.friend import Friend
-from slambook_restful.models.Secret.secret import Secret
+
 from slambook_restful.app import create_app
-from slambook_restful.models import db
-from slambook_restful.settings import ProdConfig, StageConfig, DevConfig, TestConfig
+from slambook_restful.settings import DevConfig
 
 # env = os.environ.get("SLAMBOOK_ENV").lower()
 # if env == 'prod':
