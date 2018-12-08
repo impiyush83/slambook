@@ -16,8 +16,7 @@ def transfer_profile(data):
     user = User.with_id(user_id)
     if user_id == bearer_id:
         raise ConflictState("Un haan !! Its your secret key !! Try with your friends secret key !! ")
-    data = {'first_name': user.first_name , 'last_name': user.last_name, 'gender': user.gender,
-            'favourite_color': user.favourite_color, 'favourite_food': user.favourite_food,
-            'favourite_song': user.favourite_song, 'mobile': user.mobile, 'email': user.email}
+    data = dict(first_name=user.first_name, last_name=user.last_name, gender=user.gender,
+                favourite_color=user.favourite_color, favourite_food=user.favourite_food,
+                favourite_song=user.favourite_song, mobile=user.mobile, email=user.email)
     add_new_friend_remote(bearer, data)
-
