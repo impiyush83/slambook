@@ -12,3 +12,7 @@ class ResourceAlreadyPresent(Exception):
 
 class ConflictState(Exception):
     pass
+
+
+class NoResultFound(Exception):
+    pass

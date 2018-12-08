@@ -35,18 +35,15 @@
                         <article>
                             <div class="row wrap-post">
                                 <div class="entry-header">
-                                    <h2 class="entry-title">{{ friends[i]['fn']}} {{ friends[i]['sn'] }}</h2>
+                                    <h2 class="entry-title">Friend {{ i+1 }} : {{ friends[i]['first_name']}} {{ friends[i]['last_name'] }}</h2>
                                 </div>
                                 <div class="entry-content">
                                     <br>
                                     <p>
-
-
-                                        <br> Favourite Color   :  {{ friends[i]['fcolor'] }}<br>
-                                        <br> Favourite Food   :  {{ friends[i]['ffood'] }}<br>
-                                        <br> Favourite Song   :  {{ friends[i]['fsong'] }}<br>
-                                        <br> Phone no   :  {{ friends[i]['tel'] }}<br>
-
+                                        <br> Favourite Color   :  {{ friends[i]['favourite_color'] }}<br>
+                                        <br> Favourite Food   :  {{ friends[i]['favourite_food'] }}<br>
+                                        <br> Favourite Song   :  {{ friends[i]['favourite_song'] }}<br>
+                                        <br> Phone no   :  {{ friends[i]['mobile'] }}<br>
                                     </p>
                                     <br>
                                 </div>
@@ -95,7 +92,11 @@
             }));
         });
 
-        $('#create_secret_key').click(function() {
-            window.location.href = '/user/secret-key'
-        });
+    $('#create_secret_key').click(function() {
+        window.location.href = '/user/secret-key'
+    });
+
+    $('#add_friend').click(function() {
+        window.location.href = '/user/register-friend'
+    });
 </script>

@@ -6,6 +6,7 @@ from constants.common_constants import headers
 from slambook_restful.models.Friend.friend import Friend
 from slambook_restful.models.Secret.secret import Secret
 from slambook_restful.schemas.register_customer import login_user
+from slambook_restful.utils.custom_exceptions import NoResultFound
 from slambook_restful.utils.resource_exceptions import exception_handle
 from slambook_restful.utils.validators import ajax_request_data_validator_restful
 from slambook_restful.views.user_login import user_login

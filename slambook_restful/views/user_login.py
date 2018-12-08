@@ -1,7 +1,9 @@
-from flask import jsonify
+from flask import jsonify, make_response
 from flask_jwt_extended import create_access_token, create_refresh_token, set_access_cookies
 
+
 from slambook_restful.models.User.user import User
+from slambook_restful.utils.custom_exceptions import NoResultFound
 from slambook_restful.utils.utils import check_encrypted_password
 
 
@@ -12,7 +14,7 @@ def user_login(data):
     unauth_msg = 'Email or password is wrong.'
     wrong_password = 'Password is wrong.'
     if user is None:
-        return jsonify({'message': unauth_msg}), 403
+        raise NoResultFound("User not found")
     # check user password
     check = check_encrypted_password(data['password'], user.password)
 

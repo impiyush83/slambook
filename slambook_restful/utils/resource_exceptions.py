@@ -3,12 +3,11 @@ from functools import wraps
 from flask import current_app as app
 from flask import make_response
 from flask_restful import abort
-from sqlalchemy.orm.exc import NoResultFound
 from werkzeug.exceptions import HTTPException
 
 from slambook_restful.models.db import db
 from .custom_exceptions import RequestValidationException, AuthenticationException, \
-    ResourceAlreadyPresent, ConflictState
+    ResourceAlreadyPresent, ConflictState, NoResultFound
 
 
 def exception_handle(fn):
