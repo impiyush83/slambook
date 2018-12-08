@@ -3,14 +3,11 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource
 
 from constants.common_constants import headers
-from slambook_restful.models.Friend.friend import Friend
-from slambook_restful.models.Secret.secret import Secret
 from slambook_restful.models.User.user import User
 from slambook_restful.utils.resource_exceptions import exception_handle
-from slambook_restful.views.secret_key import get_secret_key
 
 
-class CustomerHomepage(Resource):
+class CustomerEnterSecretKey(Resource):
 
     decorators = [jwt_required, exception_handle]
 
@@ -20,9 +17,9 @@ class CustomerHomepage(Resource):
     def get(self):
         """
 
-    .. http:get::  /user/home
+    .. http:get::  /user/enter-secret-key
 
-        This api will be used to render homepage
+        This api will be used to create secrete key
 
         **Example request**:
 
@@ -48,10 +45,6 @@ class CustomerHomepage(Resource):
         """
         user_id = get_jwt_identity()
         user = User.with_id(user_id)
-        friends = Friend.get_friends_with_email_address(user.id)
-        is_secret_key_created = Secret.is_secret_key_created(user.email)
-        secret_key = get_secret_key(is_secret_key_created)
         return make_response(
-            render_template('homepage.html', friends=friends, is_secret_key=is_secret_key_created,
-                            len=len(friends), secret_key=secret_key),
+            render_template('enter_secret_key.html'),
             headers)

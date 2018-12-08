@@ -30,6 +30,13 @@
             <section id="container">
                 <div class="wrap-container">
                     <div class="zerogrid">
+                        <article>
+                            <div class="row wrap-post">
+                                <div class="entry-header">
+                                        <h2 class="entry-title">Your Sharable Secret Key :<p style="color:red;">{% if  is_secret_key %} {{secret_key}} {% else %} Not yet created {% endif %} </p></h2>
+                                </div>
+                            </div>
+                        </article>
                         {%   for i in range(len)  %}
 
                         <article>
@@ -83,7 +90,7 @@
                     contentType: "application/json; charset=utf-8",
                     processData: false,
                     success: function (data) {
-                        window.location.href='/'
+                        window.location.href='/';
                     },
                     error: function (data) {
                         alert("ERROR " + data.status + " " + data.statusText + " : "+data.responseJSON.message);
@@ -94,10 +101,14 @@
         });
 
     $('#create_secret_key').click(function() {
-        window.location.href = '/user/secret-key'
+        window.location.href = '/user/secret-key';
     });
 
     $('#add_friend').click(function() {
-        window.location.href = '/user/register-friend'
+        window.location.href = '/user/register-friend';
+    });
+
+    $('#enter_secret_key').click(function() {
+        window.location.href = '/user/enter-secret-key';
     });
 </script>

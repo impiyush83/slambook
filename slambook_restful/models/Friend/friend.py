@@ -1,3 +1,5 @@
+from _operator import and_
+
 from sqlalchemy import Integer, String
 from ..db import db
 
@@ -22,10 +24,14 @@ class Friend(db.Model):
 
     @classmethod
     def add_friend_details(cls, user, data):
-        friend = cls(user_id=user.id ,email=data.get("email"), first_name=data.get("first_name"), last_name=data.get("last_name"),
-                 mobile=data.get("mobile"), favourite_food=data.get("favourite_food"), gender=data.get("gender"),
-                 favourite_song=data.get("favourite_song"), favourite_color=data.get("favourite_color"))
+        friend = cls(user_id=user.id, email=data.get("email"), first_name=data.get("first_name"),
+                     last_name=data.get("last_name"),
+                     mobile=data.get("mobile"), favourite_food=data.get("favourite_food"), gender=data.get("gender"),
+                     favourite_song=data.get("favourite_song"), favourite_color=data.get("favourite_color"))
         db.session.add(friend)
         db.flush()
         db.commit()
 
+    @classmethod
+    def check_if_duplicate_friend(cls, user, data):
+        return db.query(cls).filter(and_(cls.user_id == user.id, cls.email == data.get("email"))).first()

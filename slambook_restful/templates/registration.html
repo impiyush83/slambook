@@ -108,7 +108,7 @@
                 contentType: "application/json; charset=utf-8",
                 processData: false,
                 success: function (data) {
-                    window.location.href='/user/home'
+                    window.location.href='/user/home';
                 },
                 error: function (data) {
                     alert("ERROR " + data.status + " " + data.statusText + " : "+data.responseJSON.message);

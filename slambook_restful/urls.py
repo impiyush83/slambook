@@ -1,4 +1,6 @@
 from slambook_restful.resource.customer_create_secret_key import CustomerCreateSecretKey
+from slambook_restful.resource.customer_data_transfer import CustomerDataTransfer
+from slambook_restful.resource.customer_enter_secret_key import CustomerEnterSecretKey
 from slambook_restful.resource.customer_homepage import CustomerHomepage
 from slambook_restful.resource.customer_login import CustomerLogin
 from slambook_restful.resource.customer_logout import CustomerLogout
@@ -17,6 +19,8 @@ urls = [
     URLS(resource=CustomerCreateSecretKey, endpoint=['user/secret-key'], name="create_secret_key"),
     URLS(resource=OnSpotRegisterFriend, endpoint=['user/register-friend'], name="onspot_register_friend"),
     URLS(resource=SaveFriend, endpoint=['user/save'], name="save_friend_to_db"),
+    URLS(resource=CustomerEnterSecretKey, endpoint=['user/enter-secret-key'], name="renders_web_page"),
+    URLS(resource=CustomerDataTransfer, endpoint=['user/transfer'], name="give_user_data_to_secret_key_bearer"),
 ]
 
 #
