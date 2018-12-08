@@ -1,12 +1,11 @@
 from flask import current_app as app, request, make_response, render_template
-from flask_jwt_extended import set_access_cookies, jwt_required
+from flask_jwt_extended import set_access_cookies
 from flask_restful import Resource
 
 from constants.common_constants import headers
 from slambook_restful.models.Friend.friend import Friend
 from slambook_restful.models.Secret.secret import Secret
 from slambook_restful.schemas.register_customer import login_user
-from slambook_restful.utils.custom_exceptions import NoResultFound
 from slambook_restful.utils.resource_exceptions import exception_handle
 from slambook_restful.utils.validators import ajax_request_data_validator_restful
 from slambook_restful.views.user_login import user_login
