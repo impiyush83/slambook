@@ -9,4 +9,4 @@ from manage import app
 # config = Config("")
 # config.from_object(config_name)
 
-db = SQLAlchemy(uri=app.config['DATABASE_URL'])
+db = SQLAlchemy(uri=app.config['HEROKU_POSTGRESQL_COBALT_URL'])
