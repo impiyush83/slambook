@@ -1,11 +1,9 @@
-from flask import current_app as app, request, make_response
+from flask import current_app as app, request, make_response, jsonify
 from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 
 from constants.common_constants import headers
-from slambook_restful.schemas.register_customer import transfer_profile_data
 from slambook_restful.utils.resource_exceptions import exception_handle
-from slambook_restful.utils.validators import ajax_request_data_validator_restful
 from slambook_restful.views.transfer_profile_to_secret_key_bearer import transfer_profile
 
 
@@ -15,11 +13,11 @@ class CustomerDataTransfer(Resource):
     def __init__(self):
         app.logger.info('In the constructor of {}'.format(self.__class__.__name__))
 
-    @ajax_request_data_validator_restful(transfer_profile_data)
+    # @ajax_request_data_validator_restful(transfer_profile_data)
     def post(self):
         """
 
-    .. http:post::  /user/login
+    .. http:post::  /user/transfer
 
         This api will be used to signup user
 
@@ -52,4 +50,4 @@ class CustomerDataTransfer(Resource):
         """
         data = request.json
         transfer_profile(data)
-        return make_response(headers)
+        return make_response(jsonify(headers))
