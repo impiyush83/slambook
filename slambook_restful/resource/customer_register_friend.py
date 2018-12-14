@@ -24,7 +24,7 @@ class OnSpotRegisterFriend(Resource):
 
         .. sourcecode:: http
 
-           GET  /  HTTP/1.1
+           GET  /user/register-friend  HTTP/1.1
 
         **Example response**:
 

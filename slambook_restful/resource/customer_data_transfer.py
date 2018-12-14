@@ -19,13 +19,13 @@ class CustomerDataTransfer(Resource):
 
     .. http:post::  /user/transfer
 
-        This api will be used to signup user
+        This api will be used to transfer profile to another
 
         **Example request**:
 
         .. sourcecode:: http
 
-           POST  /user/login HTTP/1.1
+           POST  /user/transfer HTTP/1.1
            {
              "email" : "nalawadepiyush@gmail.com",
              "password" : "Piyush"
@@ -41,7 +41,6 @@ class CustomerDataTransfer(Resource):
            Content-Type: application/json
            {
                 "access_token" : "sfwfwf",
-                "refresh_token": "wfgwfwgw"
            }
 
         :statuscode 200: json

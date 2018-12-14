@@ -24,11 +24,8 @@ class CustomerLogout(Resource):
 
         .. sourcecode:: http
 
-           POST  /user/login HTTP/1.1
-           {
-             "email" : "nalawadepiyush@gmail.com",
-             "password" : "Piyush"
-           }
+           POST  /user/logout HTTP/1.1
+           { }
 
         **Example response**:
 
@@ -38,10 +35,7 @@ class CustomerLogout(Resource):
            HTTP/1.1 200 OK
            Vary: Accept
            Content-Type: application/json
-           {
-                "access_token" : "sfwfwf",
-                "refresh_token": "wfgwfwgw"
-           }
+           { }
 
         :statuscode 200: json
         :statuscode 400: value error

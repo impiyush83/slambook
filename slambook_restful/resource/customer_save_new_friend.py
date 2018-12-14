@@ -17,7 +17,7 @@ class SaveFriend(Resource):
     def post(self):
         """
 
-    .. http:get::  /user/save
+    .. http:post::  /user/save
 
         This api will be used to showcase homepage
 
@@ -25,7 +25,7 @@ class SaveFriend(Resource):
 
         .. sourcecode:: http
 
-           GET  /  HTTP/1.1
+           POST  /user/save  HTTP/1.1
 
         **Example response**:
 

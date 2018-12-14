@@ -45,7 +45,6 @@ class CustomerLogin(Resource):
            Content-Type: application/json
            {
                 "access_token" : "sfwfwf",
-                "refresh_token": "wfgwfwgw"
            }
 
         :statuscode 200: json

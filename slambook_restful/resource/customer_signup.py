@@ -28,11 +28,14 @@ class CustomerSignUp(Resource):
 
            POST  /user HTTP/1.1
            {
-             "" : ,
-             "" : ,
-             "" : ,
-             "" : ,
-             "" :
+             "first_name" : Piyush,
+             "last_name" : Nalawade,
+             "password" : pict123 ,
+             "gender" : Male,
+             "favourite_color" : Red,
+             "favourite_food" : Chinese,
+             "favourite_song" : XYZ ,
+             "mobile" : 7875451222
            }
 
         **Example response**:
