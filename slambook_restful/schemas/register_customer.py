@@ -16,6 +16,6 @@ login_user = {
     'password': {'type': 'string', 'required': True}
 }
 
-# transfer_profile_data = {
-#     'secret_key': {'type': 'string', 'required': True}
-# }
+transfer_profile_data = {
+    'secret_key': {'type': 'string', 'required': True}
+}

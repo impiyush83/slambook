@@ -35,3 +35,7 @@ class Friend(db.Model):
     @classmethod
     def check_if_duplicate_friend(cls, user, data):
         return db.query(cls).filter(and_(cls.user_id == user.id, cls.email == data.get("email"))).first()
+
+    @classmethod
+    def check_if_current_user(cls, user, data):
+        return db.query(cls).filter(and_(cls.user_id == user.id, cls.email == user.email)).first()

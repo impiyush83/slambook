@@ -15,7 +15,8 @@ def transfer_profile(data):
     user_id = get_jwt_identity()
     user = User.with_id(user_id)
     if user_id == bearer_id:
-        raise ConflictState("Un haan !! Its your secret key !! Try with your friends secret key !! ")
+        raise ConflictState("Un haan !! Its your secret key !! "
+                            "Try with your friends secret key !! To transfer your data !!")
     data = dict(first_name=user.first_name, last_name=user.last_name, gender=user.gender,
                 favourite_color=user.favourite_color, favourite_food=user.favourite_food,
                 favourite_song=user.favourite_song, mobile=user.mobile, email=user.email)
