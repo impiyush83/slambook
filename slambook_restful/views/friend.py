@@ -3,6 +3,8 @@ from slambook_restful.utils.custom_exceptions import ResourceAlreadyPresent
 
 
 def save_new_friend(user, data):
+    if user.email == data.get('email'):
+        raise ResourceAlreadyPresent("Its your email id !! You cant be your friend !!")
     is_duplicate = Friend.check_if_duplicate_friend(user, data)
     is_current_user = Friend.check_if_current_user(user, data)
     if is_duplicate:
