@@ -37,7 +37,6 @@ python-dateutil==2.7.5
 python-dotenv==0.9.1
 python-editor==1.0.3
 pytz==2018.7
-PyYAML==3.13
 requests==2.20.1
 six==1.11.0
 SQLAlchemy==1.2.14
@@ -46,3 +45,4 @@ texttable==0.9.1
 urllib3==1.24.1
 websocket-client==0.54.0
 Werkzeug==0.14.1
+pyyaml>=4.2b1
