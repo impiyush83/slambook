@@ -15,8 +15,7 @@ def create_app(config_object):
     restful_api(app)
     migrate = Migrate(app=app, db=db)
     migrate.init_app(app)
-    app.config['JWT_SECRET_KEY'] = os.urandom(24)
     app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-    app.config['JWT_ACCESS_COOKIE_NAME'] = ''
+    app.config['JWT_ACCESS_COOKIE_NAME'] = 'access_token_cookie'
     jwt = JWTManager(app)
     return app
