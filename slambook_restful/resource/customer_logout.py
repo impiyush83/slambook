@@ -1,9 +1,7 @@
-from flask import current_app as app, jsonify, url_for
-from flask_jwt_extended import jwt_required, unset_jwt_cookies
+from flask import current_app as app, jsonify
+from flask_jwt_extended import unset_jwt_cookies
 from flask_restful import Resource
-from werkzeug.utils import redirect
 
-from slambook_restful.resource.customer_signup import CustomerSignUp
 from slambook_restful.utils.resource_exceptions import exception_handle
 
 

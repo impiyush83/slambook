@@ -17,5 +17,6 @@ def create_app(config_object):
     migrate.init_app(app)
     app.config['JWT_SECRET_KEY'] = os.urandom(24)
     app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+    app.config['JWT_ACCESS_COOKIE_NAME'] = ''
     jwt = JWTManager(app)
     return app

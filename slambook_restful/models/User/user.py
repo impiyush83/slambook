@@ -1,8 +1,8 @@
 from sqlalchemy import String
 
 from slambook_restful.models.Base.database import Base
+from slambook_restful.models.db import db
 from slambook_restful.utils.utils import encrypt_password
-from ..db import db
 
 
 class User(Base, db.Model):
@@ -25,10 +25,9 @@ class User(Base, db.Model):
         u1 = cls(first_name=user_obj.get("first_name"), last_name=user_obj.get("last_name"),
                  email=user_obj.get("email"), password=encrypted_password, gender=user_obj.get("gender"),
                  favourite_color=user_obj.get("favourite_color"), favourite_food=user_obj.get("favourite_food"),
-                 favourite_song=user_obj.get("favourite_song"), mobile= user_obj.get("mobile"))
+                 favourite_song=user_obj.get("favourite_song"), mobile=user_obj.get("mobile"))
         db.session.add(u1)
         db.flush()
-        db.commit()
 
     @classmethod
     def with_email_address(cls, email):

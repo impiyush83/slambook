@@ -2,6 +2,7 @@ from flask import current_app as app, request, make_response, render_template
 from flask_restful import Resource
 
 from constants.common_constants import headers
+from slambook_restful.models.db import db
 from slambook_restful.schemas.register_customer import register_user
 from slambook_restful.utils.resource_exceptions import exception_handle
 from slambook_restful.utils.validators import ajax_request_data_validator_restful
@@ -55,5 +56,6 @@ class CustomerSignUp(Resource):
 
         data = request.json
         user_registration(data)
+        db.commit()
         return make_response(render_template('login_and_sign_up.html'), 200, headers)
 
