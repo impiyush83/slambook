@@ -1,7 +1,8 @@
 from _operator import and_
 
 from sqlalchemy import Integer, String
-from ..db import db
+
+from slambook_restful.models.db import db
 
 
 class Friend(db.Model):
@@ -30,7 +31,6 @@ class Friend(db.Model):
                      favourite_song=data.get("favourite_song"), favourite_color=data.get("favourite_color"))
         db.session.add(friend)
         db.flush()
-        db.commit()
 
     @classmethod
     def check_if_duplicate_friend(cls, user, data):

@@ -19,3 +19,4 @@ def add_new_friend_remote(bearer, data):
     if is_duplicate:
         raise ResourceAlreadyPresent("Your entry is already present at your friend !! ")
     Friend.add_friend_details(bearer, data)
+

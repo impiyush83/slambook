@@ -3,6 +3,7 @@ from flask_jwt_extended import jwt_required
 from flask_restful import Resource
 
 from constants.common_constants import headers
+from slambook_restful.models.db import db
 from slambook_restful.schemas.register_customer import transfer_profile_data
 from slambook_restful.utils.resource_exceptions import exception_handle
 from slambook_restful.utils.validators import ajax_request_data_validator_restful
@@ -51,4 +52,5 @@ class CustomerDataTransfer(Resource):
         """
         data = request.json
         transfer_profile(data)
+        db.commit()
         return make_response(jsonify(headers))
