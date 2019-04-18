@@ -4,6 +4,7 @@ from flask_restful import Resource
 
 from constants.common_constants import headers
 from slambook_restful.models.User.user import User
+from slambook_restful.models.db import db
 from slambook_restful.utils.resource_exceptions import exception_handle
 from slambook_restful.utils.utils import secret_key_generator
 from slambook_restful.views.secret_key import save_secret_key
@@ -49,6 +50,7 @@ class CustomerCreateSecretKey(Resource):
         user = User.with_id(user_id)
         secret_key = secret_key_generator()
         save_secret_key(user, secret_key)
+        db.commit()
         return make_response(
             render_template('copy_secret_key.html', secret_key=secret_key),
             headers)
