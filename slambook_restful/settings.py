@@ -24,7 +24,7 @@ class StageConfig(Config):
 class DevConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    DATABASE_URL = "postgresql://slambook:slambook@localhost/slambook_dev"
+    DATABASE_URL = os.environ.get('DATABASE_URL', default='postgresql://slambook:slambook@localhost/slambook_dev')
 
 
 class TestConfig(Config):
