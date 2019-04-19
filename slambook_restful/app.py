@@ -15,6 +15,7 @@ def create_app(config_object):
     restful_api(app)
     migrate = Migrate(app=app, db=db)
     migrate.init_app(app)
+    app.config['JWT_SECRET_KEY'] = 'Hello'
     app.config['JWT_TOKEN_LOCATION'] = ['cookies']
     app.config['JWT_ACCESS_COOKIE_NAME'] = 'access_token_cookie'
     app.config['JWT_COOKIE_CSRF_PROTECT'] = False
