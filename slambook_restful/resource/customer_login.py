@@ -53,6 +53,8 @@ class CustomerLogin(Resource):
         """
         data = request.json
         access_token, user = user_login(data)
+        import pdb
+        pdb.set_trace()
         # headers['access_token'] = tokens['access_token']
         friends = Friend.get_friends_with_email_address(user.id)
         is_secret_key_created = Secret.is_secret_key_created(user.email)

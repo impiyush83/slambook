@@ -3,7 +3,7 @@ from flask_jwt_extended import create_access_token, create_refresh_token, set_ac
 
 
 from slambook_restful.models.User.user import User
-from slambook_restful.utils.custom_exceptions import NoResultFound
+from slambook_restful.utils.custom_exceptions import NoResultFound, AuthenticationException
 from slambook_restful.utils.utils import check_encrypted_password
 
 
@@ -19,7 +19,7 @@ def user_login(data):
     check = check_encrypted_password(data['password'], user.password)
 
     if not check_encrypted_password(data['password'], user.password):
-        return jsonify({'message': wrong_password}), 401
+        raise AuthenticationException(wrong_password)
     # if correct user password
 
     # create access token
